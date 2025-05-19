@@ -152,12 +152,12 @@ export class LanggraphAgent {
       const adapter = this.app.vault.adapter;
       let memoryFilePath = "";
       if (adapter instanceof FileSystemAdapter) {
-        let rawPath = `${adapter.getBasePath()}/${this.app.vault.configDir}/plugins/obsidian-mcp-assistant/memory.json`;
+        let rawPath = `${adapter.getBasePath()}/${this.app.vault.configDir}/plugins/mcp-assistants/memory.json`;
         memoryFilePath = rawPath.replace(/\\/g, '/');
         // console.log("[Langgraph.initializeMCP] Adding Memory Server. Normalized Path:", memoryFilePath);
       } else {
         console.warn("[Langgraph.initializeMCP] Vault adapter is not FileSystemAdapter. Cannot determine absolute path for memory.json. Memory server might not work as expected if it requires an absolute path.");
-        memoryFilePath = `${this.app.vault.configDir}/plugins/obsidian-mcp-assistant/memory.json`.replace(/\\/g, '/');
+        memoryFilePath = `${this.app.vault.configDir}/plugins/mcp-assistants/memory.json`.replace(/\\/g, '/');
       }
 
       if (memoryFilePath) {
