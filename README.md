@@ -1,23 +1,16 @@
-# 🤖 MCP Assistants for Obsidian 🧠
+# 🤖 MCP Client Assistants for Obsidian 🧠 
+_Initial Beta Release_
 
 **Your intelligent, file-aware AI companion, seamlessly integrated into Obsidian!**
 
 MCP Assistant brings the power of advanced language models directly into your Obsidian vault, enhanced by the **Model Context Protocol (MCP)**. This allows your AI assistant to not only chat but also securely interact with your local files, understand your notes, and become a true second brain.
 
-[![Obsidian Target Version](https://img.shields.io/badge/Obsidian-1.0.0%2B-blueviolet)](https://obsidian.md)
 _Inspired by the desire for a deeply integrated AI that respects local data and offers unparalleled flexibility._
 
 ---
 
 ## ✨ Features
 
-*   💬 **Advanced Chat Interface**:
-    *   Engage in multiple, switchable conversations.
-    *   Edit conversation titles (double-click!) or let them be auto-generated.
-    *   Clean, modern UI with Markdown rendering and code syntax highlighting.
-    *   Text selection and copy-pasting from chat messages.
-    *   Timestamps for all messages.
-    *   Graceful handling of long-running responses with a "Cancel" option.
 *   🔌 **Flexible Model Configuration**:
     *   Connect to a wide array of LLM providers: OpenAI, Anthropic, Google Gemini, Ollama (for local models!), and more.
     *   Define multiple model configurations with custom labels, API keys (provider-level or model-specific), endpoints, temperature, and other advanced JSON options.

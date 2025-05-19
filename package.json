@@ -1,6 +1,6 @@
 {
   "name": "obsidian-mcp-assistant",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Chat with LLMs and tools using MCP servers in Obsidian",
   "main": "main.js",
   "type": "module",
