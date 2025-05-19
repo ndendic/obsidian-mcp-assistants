@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-mcp-assistant",
+  "name": "MCP Assistants",
+  "version": "0.1.0",
+  "minAppVersion": "1.4.0",
+  "description": "Chat with LLM Agents and tools using MCP servers!",
+  "author": "Nikola Dendic",
+  "authorUrl": "https://github.com/ndendic",
+  "isDesktopOnly": true
+} 

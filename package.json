@@ -1,0 +1,52 @@
+{
+  "name": "obsidian-mcp-assistant",
+  "version": "1.0.0",
+  "description": "Chat with LLMs and tools using MCP servers in Obsidian",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:esbuild dev:simple-copy",
+    "dev:simple-copy": "chokidar 'main.js' 'styles.css' 'manifest.json' -c 'cpy \"{path}\" \"/mnt/c/path/to/your/vault/.obsidian/plugins/obsidian-mcp-assistant/\"' --verbose && chokidar 'views/**/*' -c 'cpy \"{path}\" \"/mnt/c/Users/ndendic/Ideaverse/.obsidian/plugins/obsidian-mcp-assistant/views/\" --parents'",
+    "dev:esbuild": "node esbuild.config.mjs watch",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "version": "node version-bump.mjs && git add manifest.json versions.json"
+  },
+  "keywords": [
+    "obsidian",
+    "plugin",
+    "mcp",
+    "langchain",
+    "llm",
+    "ai"
+  ],
+  "author": "Nikola Dendic",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "builtin-modules": "^3.3.0",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^8.2.2",
+    "cpy-cli": "^4.2.0",
+    "esbuild": "0.17.3",
+    "nodemon": "^3.0.3",
+    "npm-run-all": "^4.1.5",
+    "tslib": "2.4.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@langchain/anthropic": "^0.3.20",
+    "@langchain/community": "^0.3.42",
+    "@langchain/deepseek": "^0.0.1",
+    "@langchain/google-genai": "^0.2.7",
+    "@langchain/groq": "^0.2.2",
+    "@langchain/langgraph": "^0.2.68",
+    "@langchain/mcp-adapters": "^0.4.2",
+    "@langchain/mistralai": "^0.2.0",
+    "@langchain/ollama": "^0.2.0",
+    "@langchain/xai": "^0.0.2",
+    "dotenv": "^16.3.1",
+    "langchain": "^0.3.24"
+  }
+}

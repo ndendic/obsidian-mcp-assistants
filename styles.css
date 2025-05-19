@@ -1,0 +1,978 @@
+/* MCP Assistant Plugin Styles */
+
+.mcp-assistant-container {
+  display: flex;
+  padding-bottom: 25px;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--background-primary);
+}
+
+.message-container {
+  flex: 1;
+  padding: 16px;
+  padding-bottom: 40px; /* Add extra padding at the bottom to avoid status bar overlap */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-container {
+  display: flex;
+  align-items: flex-end;
+  margin: 4px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background-color: var(--background-primary);
+  margin-bottom: 8px;
+}
+
+.controls-container {
+  display: flex;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  background-color: var(--background-secondary);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conversation-selector-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: var(--background-secondary-alt);
+  max-width: 250px;
+}
+
+.conversation-selector-container:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.conversation-menu-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 6px;
+  color: var(--text-muted);
+}
+
+.conversation-menu-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.right-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.controls-spacer {
+  flex: 1;
+}
+
+.conversation-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-normal);
+  cursor: pointer;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title-edit-input {
+  background-color: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 14px;
+  color: var(--text-normal);
+  width: 200px;
+}
+
+.title-edit-input:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+}
+
+.mcp-assistant-control-button {
+  background-color: var(--interactive-normal);
+  color: var(--text-normal);
+  border: none;
+  border-radius: 4px;
+  padding: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.mcp-assistant-control-button:hover {
+  background-color: var(--interactive-hover);
+}
+
+.mcp-assistant-input {
+  flex: 1;
+  resize: none;
+  border: none;
+  border-radius: 0;
+  padding: 8px 12px;
+  font-size: 13px;
+  background-color: transparent;
+  color: var(--text-normal);
+  min-height: 44px;
+  max-height: 200px;
+  overflow-y: auto;
+  outline: none;
+}
+
+.mcp-assistant-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.mcp-assistant-send-button {
+  background-color: transparent;
+  color: var(--text-normal);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  margin: 0 4px 4px 0;
+}
+
+.mcp-assistant-send-button:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.mcp-assistant-send-button svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--text-normal);
+}
+
+/* User messages */
+.message {
+  display: flex;
+  max-width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  animation: fadeIn 0.3s ease;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-message {
+  background-color: var(--background-secondary);
+  align-self: flex-end;
+  max-width: 70%;
+  min-width: 80px; /* Add minimum width for short messages */
+  border-radius: 12px 12px 0 12px;
+  padding: 8px;
+  margin-bottom: 20px; /* Add margin to account for timestamp below */
+}
+
+.user-message .message-content {
+  padding: 8px 12px;
+}
+
+.system-message {
+  background-color: var(--background-modifier-form-field);
+  color: var(--text-muted);
+  font-style: italic;
+  align-self: center;
+  max-width: 90%;
+  text-align: center;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.system-message .message-content {
+  padding: 8px 12px;
+}
+
+/* Assistant messages - no bubble, just markdown */
+.message-assistant-container {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  padding: 0 8px;
+  width: 100%;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Explicitly enable text selection for message content */
+.message-content,
+.markdown-rendered,
+.message-assistant-container .markdown-rendered,
+.user-message .message-content {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
+.message-timestamp {
+  font-size: 10px;
+  color: var(--text-muted);
+  opacity: 0.7;
+  text-align: right;
+  margin-top: 4px;
+  margin-right: 4px;
+}
+
+.assistant-timestamp {
+  font-size: 10px;
+  color: var(--text-muted);
+  opacity: 0.7;
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+
+.user-message .message-timestamp {
+  position: absolute;
+  bottom: -16px;
+  right: 8px;
+  text-align: right;
+  top: auto;
+  width: 60px; /* Give timestamp a fixed width */
+}
+
+.message-content {
+  flex: 1;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Markdown content styling */
+.markdown-rendered {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-normal);
+  max-width: 100%;
+}
+
+.markdown-rendered p {
+  margin-bottom: 1em;
+}
+
+.markdown-rendered h1, 
+.markdown-rendered h2, 
+.markdown-rendered h3, 
+.markdown-rendered h4, 
+.markdown-rendered h5, 
+.markdown-rendered h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.markdown-rendered a {
+  color: var(--text-accent);
+  text-decoration: none;
+}
+
+.markdown-rendered a:hover {
+  text-decoration: underline;
+}
+
+.markdown-rendered ul,
+.markdown-rendered ol {
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+
+.markdown-rendered blockquote {
+  border-left: 4px solid var(--text-accent);
+  margin: 1em 0;
+  padding-left: 1em;
+  color: var(--text-muted);
+}
+
+.markdown-rendered img {
+  max-width: 100%;
+  display: block;
+  margin: 1em auto;
+}
+
+.markdown-rendered pre {
+  background-color: var(--code-background);
+  padding: 0;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 8px 0;
+}
+
+.markdown-rendered pre.cm-s-obsidian {
+  padding: 8px;
+}
+
+.markdown-rendered code {
+  background-color: var(--code-background);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+}
+
+.markdown-rendered table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  width: 100%;
+}
+
+.markdown-rendered th, 
+.markdown-rendered td {
+  border: 1px solid var(--background-modifier-border);
+  padding: 6px 12px;
+}
+
+.markdown-rendered th {
+  background-color: var(--background-secondary);
+  font-weight: 600;
+}
+
+.tool-use {
+  background-color: var(--background-secondary-alt);
+  border-radius: 4px;
+  padding: 8px;
+  margin: 8px 0;
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+}
+
+.tool-header {
+  font-weight: bold;
+  color: var(--text-accent);
+  margin-bottom: 4px;
+}
+
+.tool-input {
+  white-space: pre-wrap;
+  color: var(--text-normal);
+}
+
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 100%;
+}
+
+.loader {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--background-secondary-alt);
+  border-radius: 50%;
+  border-top-color: var(--text-accent);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* MCP Assistant Styles */
+
+.mcp-config-textarea {
+    margin: 12px 0;
+}
+
+.mcp-config-textarea textarea {
+    width: 100%;
+    min-height: 200px;
+    font-family: var(--font-monospace);
+    background-color: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    padding: 8px;
+    resize: vertical;
+}
+
+.setting-item-description pre {
+    background-color: var(--background-secondary);
+    padding: 8px;
+    border-radius: 4px;
+    overflow: auto;
+    font-size: 0.85em;
+}
+
+/* Chat Styles */
+.mcp-chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.mcp-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.mcp-message {
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    max-width: 85%;
+}
+
+.mcp-message-user {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.mcp-message-assistant {
+    background-color: var(--background-secondary);
+    color: var(--text-normal);
+    align-self: flex-start;
+}
+
+.mcp-input-container {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+.mcp-input {
+    flex: 1;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    padding: 8px;
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+}
+
+.mcp-send-button {
+    margin-left: 8px;
+    padding: 8px 12px;
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mcp-send-button:hover {
+    background-color: var(--interactive-accent-hover);
+}
+
+.mcp-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+/* Code syntax highlighting */
+.language-js, .language-javascript {
+  color: var(--text-normal);
+}
+
+.language-js .keyword, .language-javascript .keyword {
+  color: #c678dd;
+}
+
+.language-js .string, .language-javascript .string {
+  color: #98c379;
+}
+
+.language-js .number, .language-javascript .number {
+  color: #d19a66;
+}
+
+.language-js .comment, .language-javascript .comment {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.language-ts, .language-typescript {
+  color: var(--text-normal);
+}
+
+.language-ts .keyword, .language-typescript .keyword {
+  color: #c678dd;
+}
+
+.language-ts .string, .language-typescript .string {
+  color: #98c379;
+}
+
+.language-ts .number, .language-typescript .number {
+  color: #d19a66;
+}
+
+.language-ts .comment, .language-typescript .comment {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.language-css .selector {
+  color: #d19a66;
+}
+
+.language-css .property {
+  color: #e06c75;
+}
+
+.language-css .value {
+  color: #98c379;
+}
+
+.language-html .tag {
+  color: #e06c75;
+}
+
+.language-html .attr-name {
+  color: #d19a66;
+}
+
+.language-html .attr-value {
+  color: #98c379;
+}
+
+.language-markdown .heading {
+  color: #e06c75;
+  font-weight: bold;
+}
+
+.language-markdown .link {
+  color: #61afef;
+}
+
+/* Conversation dropdown menu */
+.conversation-dropdown {
+  background-color: var(--background-secondary-alt);
+  border-radius: 6px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  width: 250px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.conversation-menu-container {
+  padding: 6px 0;
+  overflow-y: auto;
+}
+
+.conversation-menu-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+  font-size: 14px;
+  color: var(--text-normal);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Styles for content within each menu item */
+.conversation-menu-item-content {
+  display: flex;
+  justify-content: space-between; /* Puts title and (future) icon on opposite ends */
+  align-items: center;
+  width: 100%; /* Ensure it takes full width of the menu item */
+}
+
+.conversation-menu-item-title {
+  flex-grow: 1; /* Allows title to take available space */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Placeholder for icon - will be styled properly when icon is added */
+.mcp-delete-convo-icon {
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 4px; /* Padding to make click area larger */
+  margin-left: 8px; /* Space between title and icon */
+  border-radius: 4px; /* Optional: for hover effect */
+  /* SVG icon color will be inherited from .conversation-menu-item or set directly */
+}
+
+.mcp-delete-convo-icon svg {
+  stroke: var(--text-muted); /* Default color for the icon */
+}
+
+.mcp-delete-convo-icon:hover svg {
+  stroke: var(--text-error); /* Red color on hover for the icon */
+}
+
+.mcp-delete-convo-icon:hover {
+  background-color: var(--background-modifier-hover); /* Optional: slight background on hover */
+}
+
+.conversation-menu-item:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.conversation-menu-item.active {
+  color: var(--text-accent);
+  font-weight: 600;
+}
+
+.conversation-menu-item.active::before {
+  content: "✓";
+  margin-right: 6px;
+  color: var(--text-accent);
+}
+
+.conversation-menu-item.delete {
+  color: var(--text-error);
+}
+
+.conversation-menu-item.delete:hover {
+  background-color: rgba(var(--text-error-rgb), 0.1);
+}
+
+.conversation-menu-separator {
+  height: 1px;
+  background-color: var(--background-modifier-border);
+  margin: 6px 0;
+}
+
+/* Add styles for streaming message elements */
+.stream-container {
+  width: 100%;
+  height: auto;
+  min-height: 20px;
+  border-radius: 5px;
+  background-color: transparent;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+  display: block;
+  position: relative;
+  padding-right: 10px;
+}
+
+/* Token streaming container for smoother updates */
+.token-streaming-container {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--font-text);
+  font-size: 1em;
+  line-height: 1.5;
+  color: var(--text-normal);
+}
+
+/* Fix for the positioning in message container */
+.message-assistant-container .stream-container {
+  display: block;
+  width: 100%;
+}
+
+/* Style for tool usage indicators */
+.tool-usage-indicator {
+  margin: 8px 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background-color: var(--background-primary-alt);
+  color: var(--text-muted);
+  font-size: 0.9em;
+  border-left: 3px solid var(--interactive-accent);
+}
+
+/* Style for tool results */
+.tool-result {
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
+}
+
+.tool-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--text-normal);
+  font-size: 0.9em;
+}
+
+.tool-content {
+  padding: 5px;
+  background-color: var(--background-secondary);
+  border-radius: 3px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Blinking cursor effect for active streaming */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.stream-container::after {
+  content: '|';
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  color: var(--text-accent);
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+}
+
+.stream-container.complete::after {
+  display: none;
+}
+
+/* Ensure the markdown content inside stream container displays correctly */
+.stream-container .markdown-rendered {
+  display: inline-block;
+  width: 100%;
+}
+
+/* Restart button for stuck messages */
+.restart-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  margin: 10px 0;
+  background-color: var(--background-modifier-error-rgb);
+  background-color: rgba(var(--background-modifier-error-rgb), 0.1);
+  border-radius: 5px;
+  border-left: 3px solid var(--text-error);
+  animation: fadeIn 0.5s ease-in-out;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Add a fade-in animation for restart container */
+@keyframes restart-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.restart-container.shown {
+  animation: restart-fade-in 0.5s ease-in-out;
+}
+
+.restart-message {
+  color: var(--text-error);
+  font-size: 14px;
+}
+
+.restart-button {
+  background-color: var(--text-error);
+  color: white;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.restart-button:hover {
+  background-color: rgba(var(--text-error-rgb), 0.8);
+}
+
+.mcp-models-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+.mcp-models-table th,
+.mcp-models-table td {
+  padding: 0.5em 1em;
+}
+.mcp-models-table th:last-child,
+.mcp-models-table td:last-child {
+  text-align: right;
+}
+.mcp-models-table tbody tr {
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+.mcp-models-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Agent Suggestion Popover Styles */
+.suggestion-popover .suggestion-item .mcp-agent-suggestion-name {
+  font-size: var(--font-ui-small); /* Use Obsidian's smaller UI font variable */
+  /* Alternatively, use a specific value like 0.9em or 12px */
+}
+
+/* Optional: If you want to make the whole item more compact */
+.suggestion-popover .suggestion-item {
+  padding: 4px 8px; /* Adjust padding for a tighter look */
+  min-height: unset; /* Allow items to be shorter if text is small */
+}
+
+/* Note Suggestion Popover Styles */
+.suggestion-popover .suggestion-item.mcp-note-suggestion-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start */
+  padding: 6px 10px; /* Adjust padding as needed */
+}
+
+.mcp-note-suggestion-basename {
+  font-weight: 600; /* Make basename a bit bolder */
+  font-size: var(--font-ui-normal); /* Use Obsidian's normal UI font size */
+  color: var(--text-normal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%; /* Ensure it takes full width for ellipsis */
+}
+
+.mcp-note-suggestion-path {
+  font-size: var(--font-ui-small); /* Use Obsidian's smaller UI font size */
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%; /* Ensure it takes full width for ellipsis */
+}
+
+/* Settings Tabs Styling */
+.mcp-settings-tab-nav {
+  display: flex;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.mcp-settings-tab-button {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: var(--font-ui-small);
+  color: var(--text-muted);
+  background-color: var(--background-secondary); /* Inactive tab background */
+  border: 1px solid var(--background-modifier-border); /* Applies to top, left, right, and default bottom */
+  border-radius: var(--radius-m) var(--radius-m) 0 0;
+  margin-right: 4px;
+  margin-bottom: -1px; /* Pulls the button down to cover the nav's border-bottom */
+  position: relative; 
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  box-shadow: none !important; /* Override default button shadow */
+}
+
+.mcp-settings-tab-button:hover:not(.active) {
+  background-color: var(--background-secondary-alt);
+  color: var(--text-normal);
+}
+
+.mcp-settings-tab-button.active {
+  background-color: var(--background-primary); /* Same as content pane background */
+  color: var(--text-accent); /* Active tab text color - can be --text-normal if accent is too strong */
+  border-color: var(--background-modifier-border); /* Top, left, right borders */
+  border-bottom: 1px solid var(--background-primary); /* Blends with content pane background */
+  z-index: 1; 
+}
+
+.mcp-settings-tab-content {
+  border: 1px solid var(--background-modifier-border);
+  border-top: none; 
+  padding: var(--size-4-4); 
+  background-color: var(--background-primary);
+  clear: both; /* In case any floating was involved, though flex is used */
+}
+
+/* Settings Table Action Cells & Buttons */
+.mcp-table-actions-cell {
+  text-align: right; /* Right-aligns the content (buttons) */
+  white-space: nowrap; /* Prevents buttons from wrapping if cell is too narrow */
+}
+
+.mcp-table-action-button {
+  display: inline-flex; /* Ensures horizontal layout */
+  align-items: center;   /* Vertically center icon */
+  justify-content: center; /* Horizontally center icon */
+  padding: 4px; 
+  background-color: transparent;
+  border: none;
+  color: var(--text-muted); 
+  cursor: pointer;
+  border-radius: var(--radius-s); 
+  /* vertical-align: middle; */ /* Not strictly needed with inline-flex */
+}
+
+.mcp-table-action-button svg {
+  display: block; /* Removes extra space below SVG if it were inline */
+  width: 16px; /* Consistent icon size */
+  height: 16px;
+  stroke: var(--text-normal);
+}
+
+.mcp-table-action-button:hover {
+  background-color: var(--background-modifier-hover);
+  color: var(--text-normal); /* Icon color on hover */
+}
+
+/* Default state for warning (delete) button icon */
+.mcp-table-action-button.mod-warning svg {
+  stroke: var(--text-error); /* Red icon by default */
+}
+
+/* Keep background transparent by default, override general hover */
+.mcp-table-action-button.mod-warning {
+  background-color: transparent !important; /* Explicitly transparent, override specificity if needed */
+  color: var(--text-error); /* Ensures icon color is red */
+}
+
+.mcp-table-action-button.mod-warning:hover {
+  color: var(--text-error); 
+  background-color: var(--background-modifier-error-hover) !important; /* Reddish background on hover */
+}
+
+.mcp-table-action-button.mod-warning:hover svg {
+  stroke: var(--text-on-accent); /* Change to a contrasting color on hover */
+}
+
+/* Generic Settings Table Styling */
+.mcp-settings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+.mcp-settings-table th,
+.mcp-settings-table td {
+  padding: 8px 12px; /* Standardized padding */
+  text-align: left; /* Ensure consistent default alignment */
+  border-bottom: 1px solid var(--background-modifier-border); /* Apply to all cells for consistency */
+}
+.mcp-settings-table th {
+  font-weight: 600; /* Make headers bold */
+  background-color: var(--background-secondary); /* Slight background for headers */
+}
+/* Remove bottom border from last row of tbody for cleaner look if table has outer border */
+.mcp-settings-table tbody tr:last-child td {
+  border-bottom: none;
+}
+/* Specific alignment for the actions column */
+.mcp-settings-table th.mcp-table-actions-header, /* If we add a class to header */
+.mcp-settings-table td.mcp-table-actions-cell { /* Existing class on td */
+  text-align: right;
+} 

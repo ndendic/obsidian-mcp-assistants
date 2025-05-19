@@ -1,0 +1,372 @@
+{
+  "schema_version": "1.1",
+  "analysis_metadata": {
+    "language": "TypeScript",
+    "total_lines_analyzed": 2872,
+    "analysis_timestamp": "2025-05-19T08:23:00Z"
+  },
+  "file_structure": {
+    ".gitignore": { "type": "file" },
+    ".obsidian.json": { "type": "file" },
+    "esbuild.config.mjs": { "type": "file" },
+    "langchain-mcp.d.ts": { "type": "file" },
+    "log.txt": { "type": "file" },
+    "main.js": { "type": "file" },
+    "manifest.json": { "type": "file" },
+    "obsidian.d.ts": { "type": "file" },
+    "package-lock.json": { "type": "file" },
+    "package.json": { "type": "file" },
+    "README.md": { "type": "file" },
+    "styles.css": { "type": "file" },
+    "test.js": { "type": "file" },
+    "tsconfig.json": { "type": "file" },
+    "version-bump.mjs": { "type": "file" },
+    "versions.json": { "type": "file" },
+    "ai": { 
+      "type": "directory", 
+      "children": [
+        { 
+          "path": "ai/docs", 
+          "type": "directory", 
+          "children": [
+            { "path": "ai/docs/Implementation state.md", "type": "file" },
+            { "path": "ai/docs/Implementation-progress.md", "type": "file" },
+            { "path": "ai/docs/langgraph streaming in obsidian.md", "type": "file" },
+            { "path": "ai/docs/Multi-Agent Feature Plan.md", "type": "file" },
+            { "path": "ai/docs/Optimization plan.md", "type": "file" }
+          ]
+        }
+      ]
+    },
+    "src": { 
+      "type": "directory", 
+      "children": [
+        { "path": "src/Langgraph.ts", "type": "file" },
+        { "path": "src/main.ts", "type": "file" },
+        { "path": "src/Settings.ts", "type": "file" },
+        { "path": "src/Stream.ts", "type": "file" },
+        { "path": "src/tools.ts", "type": "file" },
+        { "path": "src/types.d.ts", "type": "file" },
+        { 
+          "path": "src/views", 
+          "type": "directory", 
+          "children": [
+            { "path": "src/views/ChatView.ts", "type": "file" }
+          ]
+        }
+      ]
+    },
+    "views": { 
+      "type": "directory", 
+      "children": [
+        { "path": "views/ChatView.js", "type": "file" }
+      ]
+    }
+  },
+  "entities": [
+{
+      "id": "src/main.ts:MCPAssistantPlugin.onload",
+      "path": "src/main.ts",
+      "name": "onload",
+      "kind": "method",
+      "scope": "class",
+      "signature": "async onload()",
+      "line_start": 12,
+      "line_end": 38
+    },
+    {
+      "id": "src/main.ts:MCPAssistantPlugin.activateView",
+      "path": "src/main.ts",
+      "name": "activateView",
+      "kind": "method",
+      "scope": "class",
+      "signature": "async activateView()",
+      "line_start": 40,
+      "line_end": 57
+    },
+    {
+      "id": "src/main.ts:MCPAssistantPlugin.initializeMCP",
+      "path": "src/main.ts",
+      "name": "initializeMCP",
+      "kind": "method",
+      "scope": "class",
+      "signature": "async initializeMCP()",
+      "line_start": 59,
+      "line_end": 68
+    },
+    {
+      "id": "src/main.ts:MCPAssistantPlugin.runQuery",
+      "path": "src/main.ts",
+      "name": "runQuery",
+      "kind": "method",
+      "scope": "class",
+      "signature": "async runQuery(messages: Message[], conversationId: string, agentId?: string): Promise<any>",
+      "line_start": 70,
+      "line_end": 89
+    },
+    {
+      "id": "src/main.ts:MCPAssistantPlugin.streamQuery",
+      "path": "src/main.ts",
+      "name": "streamQuery",
+      "kind": "method",
+      "scope": "class",
+      "signature": "async streamQuery(messages: Message[], conversationId: string, agentId: string | undefined, callback: (chunk: any, isComplete: boolean) => void): Promise<void>",
+      "line_start": 98,
+      "line_end": 118
+    },
+    {
+      "id": "src/Settings.ts:ApiKeyStore",
+      "path": "src/Settings.ts",
+      "name": "ApiKeyStore",
+      "kind": "interface",
+      "scope": "module",
+      "signature": "{ [provider: string]: string }",
+      "line_start": 3,
+      "line_end": 5
+    },
+    {
+      "id": "src/Settings.ts:ModelConfig",
+      "path": "src/Settings.ts",
+      "name": "ModelConfig",
+      "kind": "interface",
+      "scope": "module",
+      "signature": "{ id: string; provider: string; model: string; label?: string; apiKey: string; endpointUrl?: string; temperature?: number; customOptions?: Record<string, any> }",
+      "line_start": 7,
+      "line_end": 16
+    },
+    {
+      "id": "src/Settings.ts:AgentConfig",
+      "path": "src/Settings.ts",
+      "name": "AgentConfig",
+      "kind": "interface",
+      "scope": "module",
+      "signature": "{ id: string; name: string; handle: string; modelId: string; systemPrompt: string }",
+      "line_start": 18,
+      "line_end": 24
+    },
+    {
+      "id": "src/Settings.ts:MCPAssistantSettings",
+      "path": "src/Settings.ts",
+      "name": "MCPAssistantSettings",
+      "kind": "interface",
+      "scope": "module",
+      "signature": "{ apiKeys: ApiKeyStore; models: ModelConfig[]; agents: AgentConfig[]; defaultModelId: string; useFilesystemServer: boolean; customServerConfig: string; useCustomConfig: boolean; useMemoryServer: boolean; maxConversations: number; systemPrompt: string; enabledTools: { read_file: boolean; upsert_note: boolean; delete_file: boolean; list_files_by_tag: boolean; get_active_note: boolean; get_vault_path: boolean; simple_search: boolean; get_vault_structure: boolean; }; }",
+      "line_start": 26,
+      "line_end": 47
+    },
+    {
+      "id": "src/Langgraph.ts:LanggraphAgent",
+      "path": "src/Langgraph.ts",
+      "name": "LanggraphAgent",
+      "kind": "class",
+      "scope": "module",
+      "signature": "class LanggraphAgent",
+      "line_start": 122,
+      "line_end": 323
+    },
+    {
+      "id": "src/Stream.ts:streamQuery",
+      "path": "src/Stream.ts",
+      "name": "streamQuery",
+      "kind": "function",
+      "scope": "module",
+      "signature": "async function streamQuery(workflow: any, messages: any[], conversationId: string, agentId: string | undefined, callback: (eventData: any, isComplete: boolean) => void)",
+      "line_start": 35,
+      "line_end": 122
+    },
+    {
+      "id": "src/types.d.ts:Message",
+      "path": "src/types.d.ts",
+      "name": "Message",
+      "kind": "interface",
+      "scope": "module",
+      "signature": "{ id: string; role: string; content: string | any; isLoading?: boolean; timestamp?: number; agentId?: string; isToolCall?: boolean; toolCallId?: string; isRenderedOnce?: boolean; }",
+      "line_start": 3,
+      "line_end": 13
+    },
+    {
+      "id": "src/types.d.ts:Conversation",
+      "path": "src/types.d.ts",
+      "name": "Conversation",
+      "kind": "interface",
+      "scope": "module",
+      "signature": "{ id: string; title: string; lastUpdated: number; messages: Message[]; lastUsedAgentId?: string; }",
+      "line_start": 15,
+      "line_end": 21
+    },
+    {
+      "id": "src/views/ChatView.ts:ChatView",
+      "path": "src/views/ChatView.ts",
+      "name": "ChatView",
+      "kind": "class",
+      "scope": "module",
+      "signature": "extends ItemView",
+      "line_start": 175,
+      "line_end": 1342
+    },
+    {
+      "id": "src/main.ts:MCPAssistantPlugin",
+      "path": "src/main.ts",
+      "name": "MCPAssistantPlugin",
+      "kind": "class",
+      "scope": "module",
+      "signature": "extends Plugin",
+      "line_start": 8,
+      "line_end": 193
+    },
+    {
+      "id": "src/main.ts:MCPAssistantPlugin.settings",
+      "path": "src/main.ts",
+      "name": "settings",
+      "kind": "variable",
+      "scope": "class",
+      "signature": "MCPAssistantSettings",
+      "line_start": 9,
+      "line_end": 9
+    },
+    {
+      "id": "src/main.ts:MCPAssistantPlugin.agent",
+      "path": "src/main.ts",
+      "name": "agent",
+      "kind": "variable",
+      "scope": "class",
+      "signature": "LanggraphAgent | null = null",
+      "line_start": 10,
+      "line_end": 10
+    }
+  ],
+  "relationships": [
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin",
+      "to_id": "src/Settings.ts:MCPAssistantSettings",
+      "type": "uses_var",
+      "line_number": 9
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin",
+      "to_id": "src/Langgraph.ts:LanggraphAgent",
+      "type": "uses_var",
+      "line_number": 10
+},
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.onload",
+      "to_id": "src/main.ts:MCPAssistantPlugin.loadSettings",
+      "type": "calls",
+      "line_number": 13
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.onload",
+      "to_id": "src/views/ChatView.ts:VIEW_TYPE_CHAT",
+      "type": "uses_var",
+      "line_number": 17
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.onload",
+      "to_id": "src/views/ChatView.ts:ChatView",
+      "type": "instantiates",
+      "line_number": 18
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.onload",
+      "to_id": "src/Settings.ts:MCPAssistantSettingTab",
+      "type": "instantiates",
+      "line_number": 22
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.onload",
+      "to_id": "src/main.ts:MCPAssistantPlugin.activateView",
+      "type": "calls",
+      "line_number": 26
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.onload",
+      "to_id": "src/main.ts:MCPAssistantPlugin.initializeMCP",
+      "type": "calls",
+      "line_number": 32
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.activateView",
+      "to_id": "src/views/ChatView.ts:VIEW_TYPE_CHAT",
+      "type": "uses_var",
+      "line_number": 44
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.initializeMCP",
+      "to_id": "src/Langgraph.ts:LanggraphAgent",
+      "type": "instantiates",
+      "line_number": 61
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.runQuery",
+      "to_id": "src/types.d.ts:Message",
+      "type": "uses_var",
+      "line_number": 70
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.streamQuery",
+      "to_id": "src/types.d.ts:Message",
+      "type": "uses_var",
+      "line_number": 98
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.streamQuery",
+      "to_id": "src/Stream.ts:streamQuery",
+      "type": "calls",
+      "line_number": 113
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.loadSettings",
+      "to_id": "src/Settings.ts:DEFAULT_SETTINGS",
+      "type": "uses_var",
+      "line_number": 128
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.saveSettings",
+      "to_id": "src/main.ts:MCPAssistantPlugin.initializeMCP",
+      "type": "calls",
+      "line_number": 137
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.clearConversationState",
+      "to_id": "src/Langgraph.ts:LanggraphAgent.clearConversationState",
+      "type": "calls",
+      "line_number": 178
+    },
+    {
+      "from_id": "src/main.ts:MCPAssistantPlugin.initializeConversationState",
+      "to_id": "src/Langgraph.ts:LanggraphAgent.initializeConversationState",
+      "type": "calls",
+      "line_number": 188
+    },
+    {
+      "from_id": "src/Langgraph.ts:LanggraphAgent.initializeMCP",
+      "to_id": "src/tools.ts:readFileTool",
+      "type": "calls",
+      "line_number": 148
+    },
+    {
+      "from_id": "src/Langgraph.ts:LanggraphAgent.initializeMCP",
+      "to_id": "src/tools.ts:upsertNoteTool",
+      "type": "calls",
+      "line_number": 149
+    },
+    {
+      "from_id": "src/Langgraph.ts:LanggraphAgent.initializeMCP",
+      "to_id": "src/tools.ts:deleteFileTool",
+      "type": "calls",
+      "line_number": 150
+    },
+    {
+      "from_id": "src/views/ChatView.ts:ChatView",
+      "to_id": "src/types.d.ts:Message",
+      "type": "uses_var",
+      "line_number": 178
+    },
+    {
+      "from_id": "src/views/ChatView.ts:ChatView",
+      "to_id": "src/types.d.ts:Conversation",
+      "type": "uses_var",
+      "line_number": 185
+    }
+  ]
+}
